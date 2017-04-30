@@ -1,0 +1,64 @@
+.header{
+	height: 40px;
+    position: fixed;
+    top: 0px;
+    background-color: indianred;
+    color: white;
+    width: 100%;
+    text-align: center;
+    font-size: xx-large;
+    border-radius:2px;
+}
+
+.stocksTable{
+	border: solid;
+    border-color: black;
+    border-collapse: collapse;
+    width:90%;
+    margin-left:5%;
+}
+.stocksTable td{
+	border:1px;
+	border: solid;
+    border-color: black;
+    padding:15px;
+    width:33%;
+}
+.stocksTable th{
+	border:1px;
+	border: solid;
+    border-color: black;
+    padding:15px;
+    background-color:indianred;
+    color:white;
+    width:33%;
+}
+.stocksTable tr:hover {
+	background-color: #f5f5f5
+}
+.red{
+	background-color : #ffcccc;
+}
+.green{
+	background-color : greenyellow;
+}
+.white{
+	background-color : white;
+}
+.footer{
+	height:40px;
+	background-color:#A9A9A9;
+	border-radius:2px;
+}
+.search{
+	height: 25px;
+    width: 90%;
+    font-style: italic;
+    padding-left:10px;
+}
+.searchRow{
+	padding-left: 15px;
+    padding-right: 2px;
+    padding-top: 8px;
+    padding-bottom: 8px;
+}
