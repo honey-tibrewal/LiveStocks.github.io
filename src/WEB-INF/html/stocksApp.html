@@ -19,7 +19,7 @@
 	<div class = "header">
 		Live Stocks
 	</div>
-	<div style="overflow-x:auto;margin-top:50px;background:linear-gradient(to right, rgba(192,192,192,0), rgba(192,192,192,1));padding-bottom:-50px;">
+	<div style="overflow-x:auto;margin-top:50px;padding-bottom:-50px;">
 		<table class="stocksTable">
 			<thead>
 				<tr>
@@ -35,14 +35,14 @@
 						<span ng-show="!reverseSort" style="float:right"><img src="../images/up_arrow.jpg" alt="Ascending" style="width:17px;height:17px;"></span>
 						<span ng-show="reverseSort" style="float:right"><img src="../images/down_arrow.jpg" alt="Descending" style="width:17px;height:17px;"></span></span>
 					</th>
-					<th>
-						Price Trend
-					</th>
 					<th ng-click="orderByField='lastUpdate'; reverseSort = !reverseSort">
 						Last Update
 						<span ng-show="orderByField == 'lastUpdate'">
 						<span ng-show="!reverseSort" style="float:right"><img src="../images/up_arrow.jpg" alt="Ascending" style="width:17px;height:17px;"></span>
 						<span ng-show="reverseSort" style="float:right"><img src="../images/down_arrow.jpg" alt="Descending" style="width:17px;height:17px;"></span></span>	
+					</th>
+					<th>
+						Price Trend
 					</th>
 				</tr>
 				<tr>
@@ -52,11 +52,11 @@
 					<th class="searchRow">
 						<input type="text" placeholder="Search Price" class="search" ng-model="search.price">
 					</th>
-					<th>
-						&nbsp;
-					</th>
 					<th class="searchRow">
 						<input type="text" placeholder="Search Last Updated" class="search" ng-model="search.lastUpdate">
+					</th>
+					<th>
+						&nbsp;
 					</th>
 				</tr>
 			</thead>
@@ -72,14 +72,14 @@
 					<td class='{{rows.priceClass}}' style="text-align: right;">
 						{{rows.price}}
 					</td>
-					<td>
-						<div price-spark ng-model="rows.sparkArr"/>
-					</td>
-					<td ng-if=!rows.currentUpdate>
+					<td ng-if=!rows.currentUpdate style="text-align: center;">
 						{{rows.lastUpdate}}
 					</td>
-					<td ng-if=rows.currentUpdate>
-						A few Seconds Ago
+					<td ng-if=rows.currentUpdate style="text-align: center;">
+						A few seconds ago
+					</td>
+					<td>
+						<div price-spark ng-model="rows.sparkArr"/>
 					</td>
 				</tr>
 			</tbody>
