@@ -7,6 +7,7 @@
 	<link rel="stylesheet" href="../css/style.css">
 	<script src="../js/angular.min.js"></script>
 	<script src="../js/jquery-1.11.1.js"></script>
+	<script src="../js/jquery.sparkline.min.js"></script>
 	<script src="../js/stcksAppJs.js"></script>
 	<script>
 	var socket;
@@ -34,6 +35,9 @@
 						<span ng-show="!reverseSort" style="float:right"><img src="../images/up_arrow.jpg" alt="Ascending" style="width:17px;height:17px;"></span>
 						<span ng-show="reverseSort" style="float:right"><img src="../images/down_arrow.jpg" alt="Descending" style="width:17px;height:17px;"></span></span>
 					</th>
+					<th>
+						Price Trend
+					</th>
 					<th ng-click="orderByField='lastUpdate'; reverseSort = !reverseSort">
 						Last Update
 						<span ng-show="orderByField == 'lastUpdate'">
@@ -47,6 +51,9 @@
 					</th>
 					<th class="searchRow">
 						<input type="text" placeholder="Search Price" class="search" ng-model="search.price">
+					</th>
+					<th>
+						&nbsp;
 					</th>
 					<th class="searchRow">
 						<input type="text" placeholder="Search Last Updated" class="search" ng-model="search.lastUpdate">
@@ -64,6 +71,9 @@
 					</td>
 					<td class='{{rows.priceClass}}' style="text-align: right;">
 						{{rows.price}}
+					</td>
+					<td>
+						<div price-spark ng-model="rows.sparkArr"/>
 					</td>
 					<td ng-if=!rows.currentUpdate>
 						{{rows.lastUpdate}}

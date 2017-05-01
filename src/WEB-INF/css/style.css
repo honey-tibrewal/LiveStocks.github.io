@@ -22,7 +22,7 @@
 	border: solid;
     border-color: black;
     padding:15px;
-    width:33%;
+    width:25%;
 }
 .stocksTable th{
 	border:1px;
@@ -31,7 +31,7 @@
     padding:15px;
     background-color:indianred;
     color:white;
-    width:33%;
+    width:25%;
 }
 .stocksTable tr:hover {
 	background-color: #f5f5f5
