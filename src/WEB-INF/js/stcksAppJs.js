@@ -123,7 +123,7 @@ function getFormattedPrice(val){
 	
 }
 
-//Utility method to get the javascipt date into dd MMM yyyy hh:mm Format
+//Utility method to get the javascript date into dd MMM hh:mm Format
 function getDate(){
 	var formattedDate;
 	var date = new Date();
