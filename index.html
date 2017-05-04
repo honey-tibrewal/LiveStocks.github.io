@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html>
+	<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width,initial-scale=1.0" />
+	<title>Live Stocks App</title>
+	<link rel="stylesheet" href="src/WEB-INF/css/style.css">
+	<script src="src/WEB-INF/js/angular.min.js"></script>
+	<script src="src/WEB-INF/js/jquery-1.11.1.js"></script>
+	<script src="src/WEB-INF/js/jquery.sparkline.min.js"></script>
+	<script src="src/WEB-INF/js/stcksAppJs.js"></script>
+	<script>
+	var socket;
+	var updateMessage = [];
+	</script>
+	</head>
+	<body ng-app="stocksApp" ng-controller="mainController">
+	<div>
+	<div class = "header">
+		Live Stocks
+	</div>
+	<div style="overflow-x:auto;margin-top:50px;padding-bottom:-50px;">
+		<table class="stocksTable">
+			<thead>
+				<tr>
+					<th ng-click="orderByField='ticker'; reverseSort = !reverseSort">
+						Ticker
+						<span ng-show="orderByField == 'ticker'">
+						<span ng-show="!reverseSort" style="float:right"><img src="../images/up_arrow.jpg" alt="Ascending" style="width:17px;height:17px;"></span>
+						<span ng-show="reverseSort" style="float:right"><img src="../images/down_arrow.jpg" alt="Descending" style="width:17px;height:17px;"></span></span>
+					</th>
+					<th ng-click="orderByField='price'; reverseSort = !reverseSort">
+						Price
+						<span ng-show="orderByField == 'price'">
+						<span ng-show="!reverseSort" style="float:right"><img src="../images/up_arrow.jpg" alt="Ascending" style="width:17px;height:17px;"></span>
+						<span ng-show="reverseSort" style="float:right"><img src="../images/down_arrow.jpg" alt="Descending" style="width:17px;height:17px;"></span></span>
+					</th>
+					<th ng-click="orderByField='lastUpdate'; reverseSort = !reverseSort">
+						Last Update
+						<span ng-show="orderByField == 'lastUpdate'">
+						<span ng-show="!reverseSort" style="float:right"><img src="../images/up_arrow.jpg" alt="Ascending" style="width:17px;height:17px;"></span>
+						<span ng-show="reverseSort" style="float:right"><img src="../images/down_arrow.jpg" alt="Descending" style="width:17px;height:17px;"></span></span>	
+					</th>
+					<th>
+						Price Trend
+					</th>
+				</tr>
+				<tr>
+					<th class="searchRow">
+						<input type="text" placeholder="Search Ticker" class="search" ng-model="search.ticker">
+					</th>
+					<th class="searchRow">
+						<input type="text" placeholder="Search Price" class="search" ng-model="search.price">
+					</th>
+					<th class="searchRow">
+						<input type="text" placeholder="Search Last Updated" class="search" ng-model="search.lastUpdate">
+					</th>
+					<th>
+						&nbsp;
+					</th>
+				</tr>
+			</thead>
+		</table>
+		<div style="height:411px;overflow-y: auto;overflow-x: hidden;
+			display:block;">
+		<table class="stocksTable" style="border:0px;">
+			<tbody data-ng-repeat = "rows in tableData|filter:search|orderBy:orderByField:reverseSort">
+				<tr>
+					<td>
+						{{rows.ticker}}
+					</td>
+					<td class='{{rows.priceClass}}' style="text-align: right;">
+						{{rows.price}}
+					</td>
+					<td ng-if=!rows.currentUpdate style="text-align: center;">
+						{{rows.lastUpdate}}
+					</td>
+					<td ng-if=rows.currentUpdate style="text-align: center;">
+						A few seconds ago
+					</td>
+					<td>
+						<div price-spark ng-model="rows.sparkArr"/>
+					</td>
+				</tr>
+			</tbody>
+		</table>
+		</div>
+		<div style="height:40px;"></div>
+		</div>
+		</div>
+		<footer class="footer">
+			<fieldset style="float:left;border:0px;">
+				<img src="../images/decr.png" alt="Decreasing Price" style="width:17px;height:17px;">&nbsp;Price Decrease &nbsp;
+				<img src="../images/incr.png" alt="Increasing Price" style="width:17px;height:17px;">&nbsp;Price Increase
+			</fieldset>
+			<fieldset style="float:right;border:0px;">
+			Copyright@2017
+			</fieldset>
+		</footer>
+	</body>
+</html>
